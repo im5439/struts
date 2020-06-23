@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+ 
 파일 다운로드<br/>
 <a href="<%=cp %>/fileTest/download.action?saveFileName=${saveFileName }&originalFileName=${originalFileName }">${originalFileName }</a>
 <br/>
