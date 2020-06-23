@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+    <form-beans> <!-- beans = 객체생성 -->
+    	<form-bean name="boardForm" type="com.board.BoardForm"/>
+	</form-beans>
+
+    <action-mappings>
+		<action path="/board" type="com.board.BoardAction" name="boardForm" scope="request" parameter="method">
+		
+			<forward name="created" path="/board/created.jsp"/>
+			<forward name="save" redirect="true" path="/board.do?method=list"/>
+			<forward name="list" path="/board/list.jsp"/>
+			<forward name="article" path="/board/article.jsp"/>
+			<forward name="updated" path="/board/updated.jsp"/>
+			<forward name="updated_ok" redirect="true" path="/board.do?method=list"/>
+			<forward name="deleted_ok" redirect="true" path="/board.do?method=list"/>
+		
+		</action>
+    </action-mappings>
+</struts-config>
+

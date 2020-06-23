@@ -1,0 +1,28 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+<!-- struts의 name="default"와 struts-temp의 extends="default"같아야함  -->
+<package name="file" extends="default" namespace="/fileTest" >
+
+	<action name="created" method="created" class="com.fileTest.FileTestAction">
+		<result name="input">/fileTest/write.jsp</result>
+		<result name="success">/fileTest/view.jsp</result>
+	</action>
+
+	<action name="down" method="down" class="com.fileTest.FileTestAction">
+		<result name="success" type="stream">
+			<param name="inputName">inputStream</param>
+			<param name="contentType">application/octet-stream</param>
+			<param name="contentDisposition">fileName=${originalFileName}</param>
+			<param name="bufferSize">1000000</param>
+		</result>
+	</action>
+	
+	<action name="download" method="download" class="com.fileTest.FileTestAction">
+	</action>
+	
+
+</package>
+</struts>

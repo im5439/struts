@@ -1,0 +1,30 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+<!-- struts의 name="default"와 struts-temp의 extends="default"같아야함  -->
+<package name="inter" extends="default" namespace="/interTest" >
+	
+	<!-- TimerInterceptor를 myTimer라는 이름으로 객체 생성 -->
+	<interceptors>
+		<interceptor name="myTimer" class="com.inter.TimerInterceptor"/>
+	</interceptors>
+
+	<action name="write">
+		<result>/inter/write.jsp</result>
+	</action>
+
+	<action name="save" class="com.inter.TestAction">
+	
+		<interceptor-ref name="myTimer"/> <!-- 사용자가 만든 interceptor -->
+		<interceptor-ref name="params"/> <!-- 데이터를 넘기는 interceptor -->
+		<!-- interceptor로 자동으로 움직이지만 interceptor를 만들어서 실행하면 다른 interceptor
+		가 멈추므로 데이터가 안넘어간다. params를 써줘야 실행이 된다. -->
+		<!-- stacks : interceptor의 묶음(자바의 메소드같은) -->
+	
+		<result>/inter/view.jsp</result>
+	</action>
+
+</package>
+</struts>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC 
+      "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" 
+      "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="mainLayout" template="/layout/layout.jsp">
+		<put-attribute name="header" value="/layout/header.jsp"/>
+		<put-attribute name="body" value="/main.jsp"/>
+		<put-attribute name="footer" value="/layout/footer.jsp"/>
+	</definition>
+
+	<definition name="bbs.listLayout" extends="mainLayout">
+		<put-attribute name="body" value="/board/list.jsp"/>
+	</definition>
+
+	<definition name="bbs.createdLayout" extends="mainLayout">
+		<put-attribute name="body" value="/board/created.jsp"/>
+	</definition>
+
+	<definition name="bbs.articleLayout" extends="mainLayout">
+		<put-attribute name="body" value="/board/article.jsp"/>
+	</definition>
+
+</tiles-definitions>

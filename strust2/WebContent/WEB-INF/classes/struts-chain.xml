@@ -1,0 +1,32 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+<!-- struts의 name="default"와 struts-temp의 extends="default"같아야함  -->
+<package name="chain" extends="default" namespace="/chainTest" >
+
+	<action name="created" class="com.chain.RegisterAction" method="created">
+		<result name="input">/chain/register.jsp</result>
+		<!-- <result name="success">/chain/result.jsp</result> -->
+		
+		<result name="success" type="chain">
+			<param name="actionName">login</param>
+			<param name="namespace">/chainTest</param> <!-- 다른패키지의 이름을 쓰면 넘어감 -->
+		</result>
+		
+	</action>
+
+	<action name="login" class="com.chain.LoginAction" method="login">
+	
+		<interceptor-ref name="chain"/>
+		<interceptor-ref name="prepare"/>  <!-- 이 순서가 바뀌면 안된다. 1.prepare 2.modelDriven 3.params -->
+		<interceptor-ref name="modelDriven"/>
+		<interceptor-ref name="params"/>
+	
+		<result name="input">/chain/login.jsp</result>
+		<result name="success">/chain/result.jsp</result>
+	</action>        
+
+</package>
+</struts>

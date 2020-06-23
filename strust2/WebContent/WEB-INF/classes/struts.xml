@@ -1,0 +1,33 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+<!-- struts의 name="default"와 struts-temp의 extends="default"같아야함  -->
+    <package name="default" extends="struts-default" namespace="" >        
+        <global-results>
+            <result name="error">/exception/error.jsp</result>
+        </global-results>
+   </package>
+   
+   <package name="main" extends="struts-default" namespace="/">
+   
+   		<result-types>
+   			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
+   		</result-types>
+   			
+   			<action name="main">
+   				<result type="tiles">mainLayout</result>
+   			</action>
+   
+   </package>
+
+	<include file="struts-test.xml"/>
+	<include file="struts-board.xml"/>
+	<include file="struts-fileTest.xml"/>
+	<include file="struts-inter.xml"/>
+	<include file="struts-chain.xml"/>
+	<include file="struts-image.xml"/>
+
+</struts>
